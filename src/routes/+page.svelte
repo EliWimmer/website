@@ -27,14 +27,22 @@
 					id: 'notion-style-tweaks',
 					description: 'A collection of UI tweaks for Notion.',
 					image: null,
-					link: '#'
+					link: 'https://chromewebstore.google.com/detail/notion-style-tweaks/fclmlifmfhekeohpojchhkmgpmkplkpo'
 				},
 				{
 					title: 'Fern VSCode Theme',
 					id: 'fern-vscode-theme',
 					description: 'Bespoke VSCode theme with 4 styles and file icons.',
 					image: null,
-					link: '#'
+					link: 'https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern'
+				},
+				{
+					title: 'Retro Texture Tool',
+					id: 'retro-texture-tool',
+					description: 'Batch-generate retro textures from PBR maps.',
+					image: null,
+					link: '#',
+					snippet: WebDevSnippets(null, {})?.retroTextureTool
 				}
 			]
 		},
@@ -67,9 +75,9 @@
 				{
 					title: 'ZSA Voyager Config',
 					id: 'zsa-voyager-config',
-					description: 'Personal config for the ZSA Voyager keyboard.',
+					description: 'Personal config for the ZSA Voyager keyboard on Oryx.',
 					image: null,
-					link: 'https://github.com/eliwimm/zsa-voyager-config'
+					link: 'https://configure.zsa.io/voyager/layouts/XeDPo/latest/0'
 				},
 				{
 					title: 'Karabiner Config',
@@ -164,7 +172,9 @@
 				box-sizing: border-box;
 			}
 			& .table-header-item {
-				font-size: 0.75rem;
+				font-size: 0.625rem;
+				text-transform: uppercase;
+				font-weight: 600;
 				color: var(--color-text-tertiary);
 				box-sizing: border-box;
 				&.first {
