@@ -64,7 +64,7 @@
 		justify-content: center;
 		align-items: flex-start;
 		flex: 0.6;
-		margin-top: 4rem;
+
 		background-color: hsl(162, 14%, 9%);
 		border-radius: 0.375rem;
 		overflow: hidden;
@@ -88,7 +88,7 @@
 				color: var(--color-text-tertiary);
 				box-sizing: border-box;
 				&.first {
-					width: calc(36% - 1px);
+					width: calc(33%);
 					padding-left: 1.25rem;
 					display: flex;
 					align-items: center;

@@ -12,9 +12,9 @@
 
 	<nav>
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+			<!-- <li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="https://www.github.com/eliwimmer">
 					<Icon icon="mdi:github" height="1rem" width="1rem" />
@@ -33,6 +33,8 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+		max-width: 600px;
+		width: 100%;
 	}
 
 	.corner {
@@ -44,13 +46,13 @@
 			height: 100%;
 			& h1 {
 				all: unset;
-				font-size: 1rem;
+				font-size: 0.875rem;
 
 				letter-spacing: 0.1em;
 				width: fit-content;
 				white-space: nowrap;
 				color: var(--color-text);
-				padding-left: 1.5rem;
+				padding-left: .5rem;
 			}
 		}
 	}
@@ -58,7 +60,7 @@
 		display: flex;
 		justify-content: flex-end;
 		--background: rgba(255, 255, 255, 0.7);
-		padding-right: 1rem;
+
 	}
 
 	ul {

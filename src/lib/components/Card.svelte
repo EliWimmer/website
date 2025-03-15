@@ -10,15 +10,15 @@
 </script>
 
 <div class="card">
-	{#if image}
+	<!-- {#if image}
 		<div class="image">
 			<img src={image} alt={title} />
 		</div>
 	{:else}
 		<div class="image">
-			<Icon icon="mdi:document" color="var(--color-text-secondary)" />
+			<Icon icon="ph:dot-duotone" color="var(--color-text-secondary)" />
 		</div>
-	{/if}
+	{/if} -->
 	<div class="body">
 		<h3>{title}</h3>
 		<p>{description}</p>
