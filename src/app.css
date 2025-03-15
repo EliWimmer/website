@@ -8,7 +8,10 @@
 	--color-bg-1: #252B28;
 	--color-bg-2: hsl(224, 44%, 95%);
 	--color-theme-1: #4F9268;
-	--color-theme-2: #4075a6;
+	--color-theme-2: #798C3B;
+	--color-theme-3: #9F733C;
+	--color-theme-4: #B15D43;
+	--color-theme-5: #499784;
 	--color-text: #D1F0DB;
 	--color-text-secondary: #A0B1A5;
 	--color-text-tertiary: #708075;
@@ -36,7 +39,7 @@ p {
 }
 
 a {
-	color: var(--color-theme-1);
+	color: var(--color);
 	text-decoration: none;
 }
 
