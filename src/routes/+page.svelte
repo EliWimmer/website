@@ -1,7 +1,16 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
+	import Card from '$lib/components/Card.svelte';
+	import Icon from '@iconify/svelte';
+	import flylighter_logo from '$lib/images/flylighter_64.png';
+
+	const projects = [
+		{
+			title: 'Flylighter',
+			description: 'A web clipper for power users.',
+			image: flylighter_logo,
+			link: '#'
+		}
+	];
 </script>
 
 <svelte:head>
@@ -10,22 +19,23 @@
 </svelte:head>
 
 <section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
+	<div class="header">
+		<Icon
+			icon="ant-design:code-twotone"
+			color="var(--color-theme-1)"
+			height="1.25rem"
+			width="1.25rem"
+		/>
+		<h2>Web Dev</h2>
+	</div>
+	{#each projects as project}
+		<Card
+			title={project.title}
+			description={project.description}
+			image={project.image}
+			link={project.link}
+		/>
+	{/each}
 </section>
 
 <style>
@@ -33,27 +43,21 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
+		align-items: flex-start;
 		flex: 0.6;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+		& .header {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			gap: 0.5rem;
+			margin-bottom: 0.75rem;
+			& h2 {
+				all: unset;
+				padding-top: 1px;
+				font-size: 1rem;
+				color: var(--color-text-secondary);
+			}
+		}
 	}
 </style>
