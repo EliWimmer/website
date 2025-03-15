@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	let {
 		children = () => null,
 		title = 'Project',
@@ -9,21 +10,26 @@
 </script>
 
 <div class="card">
-	<div class="image">
-		<img src={image} alt={title} />
-	</div>
+	{#if image}
+		<div class="image">
+			<img src={image} alt={title} />
+		</div>
+	{:else}
+		<div class="image">
+			<Icon icon="mdi:document" color="var(--color-text-secondary)" />
+		</div>
+	{/if}
 	<div class="body">
 		<h3>{title}</h3>
-		<p>- {description}</p>
+		<p>{description}</p>
 	</div>
 </div>
 
 <style>
 	.card {
-		border: 1px solid var(--color-border);
-		border-radius: 0.375rem;
-		padding: 0.5rem .75rem;
+		padding: 0 0.75rem;
 		min-width: 300px;
+		width: 100%;
 		cursor: pointer;
 		transition:
 			border-color 100ms ease,
@@ -31,7 +37,10 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: .5rem;
+		gap: 0.5rem;
+		box-sizing: border-box;
+		&.even {
+		}
 		& .image {
 			display: flex;
 			align-items: center;
@@ -51,20 +60,30 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			gap: .5rem;
+			justify-content: flex-start;
+			gap: 0.5rem;
+			width: 100%;
 		}
 		& h3 {
 			all: unset;
 			font-size: 1rem;
+			width: 32%;
+			height: 1.75rem;
+			display: flex;
+			align-items: center;
 		}
 		& p {
 			all: unset;
+			display: flex;
+			align-items: center;
 			font-size: 0.875rem;
 			color: var(--color-text-secondary);
+			width: 68%;
+			border-left: 1px solid rgba(255, 255, 255, 0.05);
+			height: 1.75rem;
+			padding-left: 0.5rem;
 		}
 		&:hover {
-			border-color: var(--color-theme-1);
-			box-shadow: 0 0 4px 0 #34744c;
 			& img {
 				opacity: 1;
 			}
