@@ -33,8 +33,9 @@
 	header {
 		display: flex;
 		justify-content: space-between;
-		max-width: 600px;
+		padding: 0 1rem;
 		width: 100%;
+		box-sizing: border-box;
 	}
 
 	.corner {
@@ -52,7 +53,7 @@
 				width: fit-content;
 				white-space: nowrap;
 				color: var(--color-text);
-				padding-left: .5rem;
+
 			}
 		}
 	}

@@ -4,8 +4,14 @@
 	import flylighter_logo from '$lib/images/flylighter_64.png';
 	import WebDevSnippets from '$lib/components/WebDevSnippets.svelte';
 	import { onMount } from 'svelte';
+	import { fade, slide } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
+
+	let mounted = $state(false);
+
 	onMount(() => {
 		console.log(WebDevSnippets(null, {}));
+		mounted = true;
 	});
 
 	let projects = [
@@ -25,21 +31,24 @@
 				{
 					title: 'Notion Style Tweaks',
 					id: 'notion-style-tweaks',
-					description: 'A collection of UI tweaks for Notion.',
+					description: 'A browser extension that adds a collection of UI tweaks for Notion.',
 					image: null,
 					link: 'https://chromewebstore.google.com/detail/notion-style-tweaks/fclmlifmfhekeohpojchhkmgpmkplkpo'
 				},
 				{
-					title: 'Fern VSCode Theme',
+					title: 'Fern Theme',
 					id: 'fern-vscode-theme',
-					description: 'Bespoke VSCode theme with 4 styles and file icons.',
+					description:
+						"A handcrafted color theme for your shell and editor. (You're looking at it!)",
 					image: null,
-					link: 'https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern'
+					link: '',
+					snippet: WebDevSnippets(null, {})?.fernTheme
 				},
 				{
 					title: 'Retro Texture Tool',
 					id: 'retro-texture-tool',
-					description: 'Batch-generate retro textures from PBR maps.',
+					description:
+						'An appliction written in Python for batch-generating retro textures from PBR maps.',
 					image: null,
 					link: '#',
 					snippet: WebDevSnippets(null, {})?.retroTextureTool
@@ -84,7 +93,8 @@
 					id: 'karabiner-config',
 					description: 'Config for Karabiner Elements with Hyper, Meh, and home row mods.',
 					image: null,
-					link: 'https://github.com/eliwimm/karabiner-config'
+					link: '',
+					snippet: WebDevSnippets(null, {})?.karabinerConfig
 				}
 			]
 		},
@@ -109,38 +119,44 @@
 	<title>Home</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
-
-{#each projects as project}
-	<section style="--color: {project.color}">
-		<div class="header">
-			<Icon icon={project.icon} color={project.color} height="1.25rem" width="1.25rem" />
-			<h2>{project.title}</h2>
-		</div>
-		<div class="table-header">
-			<div class="indicator"></div>
-			<div class="table-header-item first">Project</div>
-			<div class="table-header-item second">Description</div>
-		</div>
-		{#each project.items as item, index (item.id)}
-			<div
-				class="project"
-				class:last={index === project.items.length - 1}
-				class:even={index % 2 === 0}
-			>
-				<div class="tree-indicator-top"></div>
-				{#if index !== project.items.length - 1}
-					<div class="tree-indicator-bottom"></div>
-				{/if}
-				<Card
-					title={item.title}
-					description={item.description}
-					image={item.image}
-					link={item.link}
-					customSnippet={item.snippet}
-				/>
+{#each projects as project, projectIndex}
+	{#if mounted}
+		<section
+			style="--color: {project.color}"
+			transition:slide={{ duration: 300, delay: projectIndex * 100, easing: cubicOut }}
+		>
+			<div class="header">
+				<Icon icon={project.icon} color={project.color} height="1.25rem" width="1.25rem" />
+				<h2>{project.title}</h2>
 			</div>
-		{/each}
-	</section>
+			<div class="table-header">
+				<div class="indicator"></div>
+				<div class="table-header-item first">Project</div>
+				<div class="table-header-item second">Description</div>
+			</div>
+			{#each project.items as item, index (item.id)}
+				{#if mounted}
+					<div
+						class="project"
+						class:last={index === project.items.length - 1}
+						class:even={index % 2 === 0}
+					>
+						<div class="tree-indicator-top"></div>
+						{#if index !== project.items.length - 1}
+							<div class="tree-indicator-bottom"></div>
+						{/if}
+						<Card
+							title={item.title}
+							description={item.description}
+							image={item.image}
+							link={item.link}
+							customSnippet={item.snippet}
+						/>
+					</div>
+				{/if}
+			{/each}
+		</section>
+	{/if}
 {/each}
 
 <style>
@@ -220,7 +236,7 @@
 			display: flex;
 			flex-direction: row;
 			align-items: flex-start;
-			padding-left: 1.5rem;
+
 			position: relative;
 			box-sizing: border-box;
 			background-color: hsl(162, 14%, 12%);

@@ -31,6 +31,8 @@
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.3",
+		"@types/matter-js": "^0.19.8",
+		"matter-js": "^0.20.0",
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"storybook": "^8.4.1",

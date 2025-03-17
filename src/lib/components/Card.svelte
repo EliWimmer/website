@@ -69,13 +69,9 @@
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
-
 		width: 600px;
-		max-width: 600px;
 		& .custom-snippet-container {
-			width: 624px;
-			margin-left: -1.5rem;
-			padding: 0 0.5rem 0 0.5rem;
+			width: 100%;
 			box-sizing: border-box;
 			border-top: 1px solid rgba(255, 255, 255, 0.05);
 			border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -119,6 +115,7 @@
 			justify-content: flex-start;
 			gap: 0.5rem;
 			width: 100%;
+			padding-left: 1.5rem;
 		}
 		& h3 {
 			all: unset;

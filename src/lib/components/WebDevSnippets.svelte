@@ -1,11 +1,15 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import rttImage from '$lib/images/rtt.png';
+	import fernImage from '$lib/images/fern-colors.png';
 	import { fade } from 'svelte/transition';
+	import CodeBlock from './CodeBlock.svelte';
 	export const flylighter = flylighterSnippet;
 	export const retroTextureTool = retroTextureToolSnippet;
-
+	export const karabinerConfig = karabinerConfigSnippet;
+	export const fernTheme = fernThemeSnippet;
 	let showLargeRttImage = $state(false);
+	let showLargeFernImage = $state(false);
 </script>
 
 {#snippet flylighterSnippet()}
@@ -51,7 +55,7 @@
 			alt="Retro Texture Tool"
 			on:click={() => (showLargeRttImage = !showLargeRttImage)}
 		/>
-		<div class="links">
+		<div class="links" style="">
 			<a href="https://sykoknot.itch.io/retro-texture-tool" target="_blank">
 				<Icon icon="la:itch-io" />
 				Buy on Itch.io</a
@@ -73,20 +77,184 @@
 	{/if}
 {/snippet}
 
+{#snippet karabinerConfigSnippet()}
+	<div class="main karabiner">
+		<p>
+			Each of the following code snippets are for complex modifications in the Karabiner-Elements
+			config.
+		</p>
+		<CodeBlock
+			language="JSON"
+			code={`{
+	"description": "Home Row Mods",
+	"manipulators": [
+		{
+			"from": {
+				"key_code": "j",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_command" }],
+			"to_if_alone": [{ "key_code": "j" }],
+			"type": "basic"
+		},
+		{
+			"from": {
+				"key_code": "f",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_command" }],
+			"to_if_alone": [{ "key_code": "f" }],
+			"type": "basic"
+		},
+		{
+			"from": {
+				"key_code": "k",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_option" }],
+			"to_if_alone": [{ "key_code": "k" }],
+			"type": "basic"
+		},
+		{
+			"from": {
+				"key_code": "d",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_option" }],
+			"to_if_alone": [{ "key_code": "d" }],
+			"type": "basic"
+		},
+		{
+			"from": {
+				"key_code": "s",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_control" }],
+			"to_if_alone": [{ "key_code": "s" }],
+			"type": "basic"
+		},
+		{
+			"from": {
+				"key_code": "l",
+				"modifiers": { "optional": ["any"] }
+			},
+			"to": [{ "key_code": "left_control" }],
+			"to_if_alone": [{ "key_code": "l" }],
+			"type": "basic"
+		}
+	]
+},
+`}
+		/>
+		<CodeBlock
+			language="JSON"
+			code={`{
+		"description": "Space -> Tap/Hold Space/Meh",
+		"manipulators": [
+			{
+				"from": {
+					"key_code": "spacebar",
+					"modifiers": { "optional": ["any"] }
+				},
+				"to": [
+					{
+						"key_code": "left_shift",
+						"modifiers": ["left_control", "left_option"]
+					}
+				],
+				"to_if_alone": [{ "key_code": "spacebar" }],
+				"type": "basic"
+			}
+		]
+	},
+`}
+		/>
+		<CodeBlock
+			language="JSON"
+			code={`{
+		"description": "Capslock -> Tap/Hold Esc/Hyper",
+		"manipulators": [
+			{
+				"from": {
+					"key_code": "caps_lock",
+					"modifiers": { "optional": ["any"] }
+				},
+				"to": [
+					{
+						"key_code": "left_shift",
+						"modifiers": ["left_command", "left_control", "left_option"]
+					}
+				],
+				"to_if_alone": [{ "key_code": "escape" }],
+				"type": "basic"
+			}
+		]
+	}
+`}
+		/>
+	</div>
+{/snippet}
+
+{#snippet fernThemeSnippet()}
+	<div class="main fern">
+		<p>
+			Fern is a rare green-based color theme for your shell and editor. Originally derived from
+			Gruvbox, it's been infused with colors of a temperate forest. Includes modified Catppuccin
+			icons to match.
+		</p>
+		<img
+			src={fernImage}
+			alt="Fern Theme"
+			on:click={() => (showLargeFernImage = !showLargeFernImage)}
+		/>
+		<div class="links">
+			<span class="link-section">Editors</span>
+			<a href="https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern" target="_blank">
+				<Icon icon="codicon:vscode" />
+				VSCode Theme</a
+			>
+			<a href="https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern" target="_blank">
+				<Icon icon="simple-icons:zedindustries" />
+				Zed</a
+			>
+			<a href="https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern" target="_blank">
+				<Icon icon="devicon-plain:neovim" />
+				Neovim</a
+			>
+		</div>
+		<div class="links pad">
+			<span class="link-section">Shells</span>
+			<a href="https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern" target="_blank">
+				<Icon icon="bxs:ghost" />
+				Ghostty</a
+			>
+			<a href="https://marketplace.visualstudio.com/items?itemName=EliWimmer.fern" target="_blank">
+				<Icon icon="solar:cat-outline" />
+				Kitty</a
+			>
+		</div>
+	</div>
+	{#if showLargeFernImage}
+		<div
+			class="large"
+			on:click={() => (showLargeFernImage = false)}
+			transition:fade={{ duration: 100 }}
+		>
+			<img src={fernImage} alt="Fern Theme" />
+		</div>
+	{/if}
+{/snippet}
+
 <style>
 	.main {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: flex-start;
-		padding-left: 3.5rem;
-		padding-right: 1rem;
-		padding-bottom: 1rem;
-		padding-top: 0.25rem;
+		padding: 1rem;
 		box-sizing: border-box;
 		position: relative;
-		width: calc(100% + 3rem);
-		margin-left: -1.5rem;
+		width: 100%;
 		background-color: hsl(162, 14%, 9%);
 		box-shadow:
 			0 -10px 10px 0 rgba(0, 0, 0, 0.075) inset,
@@ -100,7 +268,7 @@
 		position: relative;
 		margin: 0.5rem 1rem 1rem 0;
 		box-sizing: border-box;
-		width: calc(100% - 1rem);
+		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		border: 1px solid rgba(255, 255, 255, 0.1);
@@ -141,6 +309,15 @@
 		justify-content: flex-start;
 
 		font-size: 0.875rem;
+		& .link-section {
+			font-size: 0.75rem;
+			color: var(--color-text-tertiary);
+			width: 3.5rem;
+			text-transform: uppercase;
+		}
+		&.pad {
+			padding-top: 1rem;
+		}
 		& a:not(:first-child) {
 			margin-left: 1rem;
 		}
@@ -156,6 +333,22 @@
 			gap: 0.5rem;
 			height: 14px;
 			vertical-align: middle;
+		}
+	}
+
+	.karabiner {
+
+		& pre {
+			margin-left: 0;
+			margin-right: 0;
+			padding-left: 0;
+			padding-right: 0;
+			border-left: none;
+			border-right: none;
+			border-top: none;
+			border-bottom: none;
+			border-radius: 0;
+			box-shadow: none;
 		}
 	}
 </style>

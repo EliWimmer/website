@@ -16,6 +16,7 @@
 	--color-text-secondary: #A0B1A5;
 	--color-text-tertiary: #708075;
 	--color-border: #39423D;
+	--color-border-secondary: rgba(255, 255, 255, 0.1);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
 	font-family: var(--font-body);
