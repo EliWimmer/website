@@ -16,6 +16,11 @@
 				<a href="/">Home</a>
 			</li> -->
 			<li>
+				<a href="/playground">
+					Playground
+				</a>
+			</li>
+			<li>
 				<a href="https://www.github.com/eliwimmer">
 					<Icon icon="mdi:github" height="1rem" width="1rem" />
 				</a>

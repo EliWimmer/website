@@ -6,11 +6,11 @@
 	import { onMount } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
-
+	import PlaygroundP5 from '$lib/components/PlaygroundP5.svelte';
 	let mounted = $state(false);
 
 	onMount(() => {
-		console.log(WebDevSnippets(null, {}));
+
 		mounted = true;
 	});
 
@@ -75,6 +75,13 @@
 			color: 'var(--color-theme-3)',
 			items: [
 				{
+					title: 'Hyperkey Layout',
+					id: 'hyperkey-layout',
+					description: 'My Hyperkey shortcuts.',
+					image: null,
+					link: 'https://eliwimm.notion.site/My-Keyboard-Mac-1ab331913d668091a181d515ff59cd1f'
+				},
+				{
 					title: 'Sofle Choc Config',
 					id: 'sofle-choc-layout',
 					description: 'Personal config for the Sofle Choc keyboard.',
@@ -111,7 +118,22 @@
 					link: ''
 				}
 			]
-		}
+		},
+		// {
+		// 	title: 'Playground',
+		// 	icon: 'tabler:square-rounded-letter-p',
+		// 	color: 'var(--color-theme-5)',
+		// 	items: [
+		// 		{
+		// 			title: 'p5.js',
+		// 			id: 'p5js',
+		// 			description: 'A collection of p5.js projects.',
+		// 			image: null,
+		// 			link: '',
+		// 			snippet: PlaygroundP5(null, {})?.p5snip
+		// 		}
+		// 	]
+		// }
 	];
 </script>
 
